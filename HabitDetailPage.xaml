@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HabitTrackerMaui.HabitDetailPage"
+             Title="Habit Details">
+    <VerticalStackLayout Padding="20">
+        <Label Text="Habit Name:" />
+        <Entry x:Name="NameEntry" Placeholder="Enter habit name" />
+
+        <Label Text="Frequency:" />
+        <Picker x:Name="FrequencyPicker">
+            <Picker.Items>
+                <x:String>Daily</x:String>
+                <x:String>Weekly</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <Label Text="Reminder:" />
+        <Switch x:Name="ReminderSwitch" />
+
+        <Label Text="Reminder Time:" IsVisible="{Binding Source={x:Reference ReminderSwitch}, Path=IsToggled}" />
+        <TimePicker x:Name="ReminderTimePicker" IsVisible="{Binding Source={x:Reference ReminderSwitch}, Path=IsToggled}" />
+
+        <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
+            <Button Text="Save" Clicked="SaveButton_Clicked"  WidthRequest="150"/>
+            <Button Text="Cancel" Clicked="CancelButton_Clicked" WidthRequest="150"/>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

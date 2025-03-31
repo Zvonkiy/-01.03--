@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:HabitTrackerMaui"
+             x:Class="HabitTrackerMaui.MainPage"
+             Title="Habit Tracker">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add Habit" Clicked="AddHabitButton_Clicked"/>
+        <ToolbarItem Text="Clear Data" Clicked="ClearDataButton_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <ListView x:Name="HabitList" ItemsSource="{Binding Habits}" ItemTapped="Habit_ItemSelected" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Name}" FontSize="18" VerticalOptions="Center"/>
+
+                            <Button Text="Delete" Grid.Column="1"  Clicked="DeleteHabit_Clicked" CommandParameter="{Binding .}"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>
